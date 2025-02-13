@@ -1,0 +1,40 @@
+<div class="main-content">
+
+    <form [formGroup]="formGroup" (submit)="submit()" autocomplete="off" class="column">
+
+        <mat-form-field>
+            <mat-label>Books</mat-label>
+            <mat-select formControlName="book">
+                @for (book of availableBooks; track book) {
+                <mat-option [value]="book.name" [disabled]="!book.available">
+                    {{book.name}}
+                    {{!book.available ? ' will be returned on ' + book.endDate : ''}}
+                </mat-option>
+                }
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Start Date</mat-label>
+            <input matInput [matDatepicker]="startDate" formControlName="startDate" autocomplete="off" />
+            <mat-hint>dd/mm/aaaa</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="startDate"></mat-datepicker-toggle>
+            <mat-datepicker #startDate></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>End Date</mat-label>
+            <input matInput [matDatepicker]="endDate" formControlName="endDate" autocomplete="off" />
+            <mat-hint>dd/mm/aaaa</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="endDate"></mat-datepicker-toggle>
+            <mat-datepicker #endDate></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>User</mat-label>
+            <input matInput placeholder="User" formControlName="user" maxlength="100" />
+        </mat-form-field>
+
+        <button mat-flat-button type="submit">Reserve</button>
+    </form>
+</div>

@@ -1,0 +1,19 @@
+<mat-toolbar class="toolbar">
+  <button mat-icon-button class="" aria-label="" (click)="drawer.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>Wilson Library</span>
+  <span class="flex-spacer"></span>
+</mat-toolbar>
+
+<mat-drawer-container class="main-container">
+  <mat-drawer #drawer mode="over">
+    <mat-nav-list>
+      <a mat-list-item href="/">Reserve</a>
+      <a mat-list-item href="/reservations">Reservations</a>
+    </mat-nav-list>
+  </mat-drawer>
+  <mat-drawer-content>
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>
